@@ -9,7 +9,7 @@
 #####################################
 # 2011/02/22 : Germain MAURICE : first version (specific to amd64)
 # 2011/02/24 : Modified by: Mukarram Syed for i386
-# 2011/02/25 : Germain MAURICE : keeped apt-get to be more compliant and autodetect achitecture of Debian installation
+# 2011/02/25 : Germain MAURICE : keep apt-get to be more compliant and autodetect achitecture of Debian installation
 #####################################
 
 echo "Be sure you've purge or removed any previous installation of Dell OMSA, via sara.nl by example. Continue ? type 'Yes' to continue."
