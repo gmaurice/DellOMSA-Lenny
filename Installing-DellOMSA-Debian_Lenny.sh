@@ -79,7 +79,10 @@ chroot /srv/squeeze-$ARCH apt-get install $OMSA_PACKAGES
 ## Activate dataeng service at runlevel 2 if you want launched at the next boot (dataeng LSB header has to be fixed, http://lists.us.dell.com/pipermail/linux-poweredge/2011-February/044314.html)
 chroot /srv/squeeze-$ARCH update-rc.d dataeng enable 2
 chroot /srv/squeeze-$ARCH service dataeng start
+
+echo -n "Testing omreport inside squeeze..."
 chroot /srv/squeeze-$ARCH /opt/dell/srvadmin/sbin/omreport chassis info
+[ $? -ne 0 ] && echo "fail !!!"
 
 cat <<EOF > /usr/local/bin/squeeze-$ARCH
 #!/bin/bash
@@ -104,4 +107,6 @@ rm /etc/apt/sources.list.d/debian.squeeze.sources.list
 apt-get update
 
 # This could display to you some basic information about your hardware
-omreport chassis info
+echo -n "Testing omreport inside lenny..."
+/opt/dell/srvadmin/bin/omreport chassis info
+[ $? -ne 0 ] && echo "fail"
